@@ -1,0 +1,14 @@
+[
+{
+  "directory": "C:/Users/CN8498/OneDrive - Hitachi Energy/Programming/CPP/contructors/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe   -g -o CMakeFiles\\main.dir\\main.cpp.obj -c \"C:\\Users\\CN8498\\OneDrive - Hitachi Energy\\Programming\\CPP\\contructors\\main.cpp\"",
+  "file": "C:/Users/CN8498/OneDrive - Hitachi Energy/Programming/CPP/contructors/main.cpp",
+  "output": "CMakeFiles/main.dir/main.cpp.obj"
+},
+{
+  "directory": "C:/Users/CN8498/OneDrive - Hitachi Energy/Programming/CPP/contructors/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe   -g -o CMakeFiles\\main.dir\\ClassWithAllConstructors.cpp.obj -c \"C:\\Users\\CN8498\\OneDrive - Hitachi Energy\\Programming\\CPP\\contructors\\ClassWithAllConstructors.cpp\"",
+  "file": "C:/Users/CN8498/OneDrive - Hitachi Energy/Programming/CPP/contructors/ClassWithAllConstructors.cpp",
+  "output": "CMakeFiles/main.dir/ClassWithAllConstructors.cpp.obj"
+}
+]
