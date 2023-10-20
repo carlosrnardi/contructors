@@ -39,9 +39,10 @@ ClassWithAllConstructors2::ClassWithAllConstructors2(ClassWithAllConstructors2&&
 
 //!=====================================================================!//
 
-// Rule of Five5 using share pointers
+// Rule of Five using share pointers
 ClassWithAllConstructors3::ClassWithAllConstructors3() : _text(std::make_shared<std::string>("Empty")) , PrintEnabled(true)
 {
+    if(PrintEnabled) std::cout << "[default constructor] share_ptr counter " <<  _text.use_count() << std::endl;    
 }
 
 ClassWithAllConstructors3::~ClassWithAllConstructors3()
@@ -58,11 +59,20 @@ ClassWithAllConstructors3::ClassWithAllConstructors3(std::string text) : _text(s
 }
 
 // Copy constructor
-ClassWithAllConstructors3::ClassWithAllConstructors3(const ClassWithAllConstructors3& other) : _text(other._text), PrintEnabled(other.PrintEnabled)
+ClassWithAllConstructors3::ClassWithAllConstructors3(const ClassWithAllConstructors3& other) : _text(std::make_shared<std::string>(*other._text)), PrintEnabled(other.PrintEnabled)
 {
     
     if(PrintEnabled) std::cout << "[copy constructor] String memory address " << _text << " | " << other._text << std::endl;
     if(PrintEnabled) std::cout << "[copy constructor] share_ptr counter " <<  _text.use_count() << std::endl;    
+}
+
+// Copy Assign constructor
+ClassWithAllConstructors3& ClassWithAllConstructors3::operator=(const ClassWithAllConstructors3 &other) 
+{
+    *_text = *other._text;
+    if(PrintEnabled) std::cout << "[copy assign constructor] String memory address " << _text << " | " << other._text << std::endl;
+    if(PrintEnabled) std::cout << "[copy assign constructor] share_ptr counter " <<  _text.use_count() << std::endl;
+    return *this;
 }
 
 // Move constructor
@@ -71,7 +81,17 @@ ClassWithAllConstructors3::ClassWithAllConstructors3(ClassWithAllConstructors3&&
 {
     
     if(PrintEnabled) std::cout << "[move constructor] String memory address " << _text << " | " << other._text << std::endl;    
-    if(PrintEnabled) std::cout << "[move constructor] share_ptr counter " <<  _text.use_count() << std::endl;    
+    if(PrintEnabled) std::cout << "[move constructor] share_ptr counter " <<  _text.use_count() << std::endl;
+}
+
+// Move Assign constructor
+ClassWithAllConstructors3& ClassWithAllConstructors3::operator=(ClassWithAllConstructors3&& other) noexcept
+{
+    _text = std::exchange(other._text, nullptr);
+    this->PrintEnabled = other.PrintEnabled;
+    if(PrintEnabled) std::cout << "[move assign constructor] String memory address " << _text << " | " << other._text << std::endl;    
+    if(PrintEnabled) std::cout << "[move assign constructor] share_ptr counter " <<  _text.use_count() << std::endl;
+    return *this;
 }
 
 /*

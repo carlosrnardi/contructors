@@ -2,10 +2,6 @@
 #include <vector>
 
 int main() {
-    // ClassWithAllConstructors objectA;
-    // ClassWithAllConstructors objectB("Initialized");
-    // ClassWithAllConstructors objectC = objectA;
-    
     {
         std::cout << "Example of Rule of Zero \n";
         std::vector<ClassWithAllConstructors1> objects;
@@ -16,7 +12,7 @@ int main() {
         std::cout << "creating object number 3\n";
         objects.emplace_back();
         std::cout << "End of scope\n";
-    }
+    }    
     std::cout << "End of example 1\n\n-------------------------------------------------\n\n";    
 
     {
@@ -94,7 +90,34 @@ int main() {
         std::cout << "Size of object4 " << objects4.size() << std::endl;
         std::cout << "End of scope\n";
     }
+
     std::cout << "End of example 5\n\n-------------------------------------------------\n\n";    
+
+    {
+        std::cout << "Difference between copy constructor and copy assign operator\n\n";
+        ClassWithAllConstructors3 objectA {"Object A"};
+        std::cout << "Objeect A [" << *objectA._text << "] address [" << objectA._text << "]\n";
+        ClassWithAllConstructors3 objectB (objectA);
+        std::cout << "Objeect B [" << *objectB._text << "] address [" << objectB._text << "]\n";
+        ClassWithAllConstructors3 objectC {"Object C"};
+        std::cout << "Objeect C [" << *objectC._text << "] address [" << objectC._text << "]\n";
+        ClassWithAllConstructors3 objectD;
+        std::cout << "Objeect D [" << *objectD._text << "] address [" << objectD._text << "]\n";
+        objectD = objectA;
+        std::cout << "Objeect D=A [" << *objectD._text << "] address [" << objectD._text << "]\n";
+        ClassWithAllConstructors3 objectE;
+        std::cout << "Objeect E [" << *objectE._text << "] address [" << objectE._text << "]\n";
+        objectE = std::move(objectA);
+        std::cout << "Objeect E move A [" << *objectE._text << "] address [" << objectE._text << "]\n";            
+
+        std::cout << "Objeect A is in a unspecified state - address [" << objectA._text << "]\n";
+        std::cout << "Objeect B [" << *objectB._text << "] address [" << objectB._text << "]\n";
+        std::cout << "Objeect C [" << *objectC._text << "] address [" << objectC._text << "]\n";
+        std::cout << "Objeect D [" << *objectD._text << "] address [" << objectD._text << "]\n";
+        std::cout << "Objeect E [" << *objectE._text << "] address [" << objectE._text << "]\n";
+    }
+
+    std::cout << "End of example 6\n\n-------------------------------------------------\n\n";    
     std::cout << "End of program \n";
     return 0;
 }

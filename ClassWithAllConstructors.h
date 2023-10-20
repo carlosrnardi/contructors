@@ -32,13 +32,13 @@ public:
     // Copy constructor
     ClassWithAllConstructors2(const ClassWithAllConstructors2& other);
 
-     // Copy Assigned constructor
+     // Copy Assign constructor
     ClassWithAllConstructors2& operator=(const ClassWithAllConstructors2& other);
 
     // Move constructor
     ClassWithAllConstructors2(ClassWithAllConstructors2&& other) noexcept;
 
-    // Move Assigned constructor
+    // Move Assign constructor
     ClassWithAllConstructors2& operator=(ClassWithAllConstructors2&& other);
 
     // Destructor
@@ -46,7 +46,7 @@ public:
 };
 
 
-// Rule of Five5 using share pointers
+// Rule of Five using share pointers
 class ClassWithAllConstructors3
 {
 
@@ -63,14 +63,14 @@ public:
     // Copy constructor
     ClassWithAllConstructors3(const ClassWithAllConstructors3& other);
 
-     // Copy Assigned constructor
+     // Copy Assign constructor
     ClassWithAllConstructors3& operator=(const ClassWithAllConstructors3& other);
 
     // Move constructor
     ClassWithAllConstructors3(ClassWithAllConstructors3&& other) noexcept;
 
-    // Move Assigned constructor
-    ClassWithAllConstructors3& operator=(ClassWithAllConstructors3&& other);
+    // Move Assign constructor
+    ClassWithAllConstructors3& operator=(ClassWithAllConstructors3&& other) noexcept;
 
     // Destructor
     ~ClassWithAllConstructors3();
